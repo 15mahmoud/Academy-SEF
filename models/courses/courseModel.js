@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+const path = require('path');
 const courseSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: [true, "course name required"],
       unique: [true, "course name must be unique"],
@@ -9,29 +10,44 @@ const courseSchema = new mongoose.Schema(
       maxlength: [150, "Too long course name"],
       trim: true,
     },
+    slug: {
+      type: String,
+      lowercase: true,
+    },
     instructor: {
       type: String,
-      required: true,
+      required: [true, "instructor is required"],
+      trim: true,
+    },
+    category: {
+      type: String,
+      required: [true, "category is required"],
+      trim: true,
+    },
+    description: {
+      type: String,
+      required: [true, "course description is required"],
+      trim: true,
+    },
+    price: {
+      type: Number,
+      required: [true, "course price is required"],
       trim: true,
     },
     level: {
-      type: Number,
-      required: true,
+      type: String,
       trim: true,
     },
     language: {
       type: String,
-      required: true,
       trim: true,
     },
     startDate: {
       type: String,
-      required: true,
       trim: true,
     },
     duration: {
       type: String,
-      required: true,
       trim: true,
     },
     certificate: {
@@ -40,28 +56,38 @@ const courseSchema = new mongoose.Schema(
     },
     introduction: {
       type: String,
-      required: true,
       trim: true,
     },
     assessment: {
       type: String,
-      required: true,
       trim: true,
     },
     requirements: {
       type: String,
-      required: true,
       trim: true,
     },
     materials: {
       type: String,
-      required: true,
       trim: true,
     },
     publishDate: {
       type: String,
-      required: true,
       trim: true,
+    },
+    coverPhoto: {
+      type: String,
+      default: path.join(
+        `${__dirname}`,
+        `../images/course/stock-vector-human-hand-touching-on-a-book-low-poly-wireframe-online-education-blue-b.jpg`
+      ),
+    },
+    units: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Unit",
+    },
+    review: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Review",
     },
   },
   { timestamps: true }
