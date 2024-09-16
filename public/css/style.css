@@ -1,0 +1,25 @@
+  .body{
+        height: 100vh !important;
+        color: #d3d3d3 !important;
+        background-color: #313131 !important;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .form {
+      background-color: #252525 !important;
+    }
+    .input {
+        color: #d3d3d3 !important;
+        background-color: #323232 !important;
+        outline: #323232 !important;
+        border: none !important;
+    }
+    .input:focus {
+      box-shadow: none !important;
+    }
+    .btn {
+      color: #d3d3d3 !important;
+        background-color: #BF9B30 !important;
+        border: none !important;
+    }
